@@ -42,22 +42,17 @@ public class CalculatePerformer {
 		result+=value;
 	}
 	
-	public void saveResult(){
+	public void saveResult() throws IOException{
 		FileWriter fw = null;
 		try {
 			fw = new FileWriter(DIR+"\\"+OUTPUT);
 			fw.append(String.valueOf(result));
 			fw.flush();
-		} catch (IOException e) {
-			//exception
 		}
 		finally{
-			try{
+			
 				fw.close();
-			}catch(IOException e){
-				//exception
-			}
-		}
+		}	
 		
 	}
 }
