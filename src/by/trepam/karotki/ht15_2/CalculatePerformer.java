@@ -6,9 +6,9 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 
 public class CalculatePerformer {
-	private final static String DIR = "src";
-	private final static String IN_MASK = "in";
-	private final static String OUTPUT="out.dat";
+	private final String DIR = "resources";
+	private final String IN_MASK = "in";
+	private final String OUTPUT = "out.dat";
 	private double result;
 
 	public void calculate() throws InterruptedException {
@@ -25,7 +25,7 @@ public class CalculatePerformer {
 		Thread[] threads = new Thread[files.length];
 
 		for (int i = 0; i < files.length; i++) {
-			threads[i] = new Thread(new CalcThread(DIR + "\\" + files[i],this));
+			threads[i] = new Thread(new CalcThread(DIR + "\\" + files[i], this));
 			threads[i].start();
 		}
 		try {
@@ -35,24 +35,23 @@ public class CalculatePerformer {
 		} catch (InterruptedException e) {
 			throw new InterruptedException("Thread was interrupted");
 		}
-		
+
 	}
-	
-	public synchronized void append(double value){
-		result+=value;
+
+	public synchronized void append(double value) {
+		result += value;
 	}
-	
-	public void saveResult() throws IOException{
+
+	public void saveResult() throws IOException {
 		FileWriter fw = null;
 		try {
-			fw = new FileWriter(DIR+"\\"+OUTPUT);
+			fw = new FileWriter(DIR + "\\" + OUTPUT);
 			fw.append(String.valueOf(result));
 			fw.flush();
+		} finally {
+
+			fw.close();
 		}
-		finally{
-			
-				fw.close();
-		}	
-		
+
 	}
 }

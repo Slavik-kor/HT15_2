@@ -19,7 +19,7 @@ public class CalcThread implements Runnable {
 		try {
 			sc = new Scanner(new File(fileName));
 		} catch (FileNotFoundException e) {
-			//exception
+			// exception
 		}
 
 		String s1 = sc.nextLine();
@@ -31,28 +31,27 @@ public class CalcThread implements Runnable {
 		for (int i = 0; i < secLine.length; i++) {
 			value[i] = Double.valueOf(secLine[i]);
 		}
-		
+
 		double result = 0;
-		switch(action){
+		switch (action) {
 		case 1:
-			for(double i : value){
+			for (double i : value) {
 				result += i;
 			}
 			break;
 		case 2:
 			result = 1;
-			for(double i : value){
+			for (double i : value) {
 				result *= i;
 			}
 			break;
 		case 3:
-			for(double i : value){
+			for (double i : value) {
 				result += Math.pow(i, 2);
 			}
 		}
-		
+
 		cp.append(result);
-			
 
 	}
 
