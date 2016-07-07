@@ -6,9 +6,11 @@ import java.util.Scanner;
 
 public class CalcThread implements Runnable {
 	private String fileName;
+	private CalculatePerformer cp;
 
-	public CalcThread(String name) {
-		fileName = name;
+	public CalcThread(String path, CalculatePerformer cp) {
+		fileName = path;
+		this.cp = cp;
 	}
 
 	@Override
@@ -49,7 +51,7 @@ public class CalcThread implements Runnable {
 			}
 		}
 		
-		
+		cp.append(result);
 			
 
 	}
